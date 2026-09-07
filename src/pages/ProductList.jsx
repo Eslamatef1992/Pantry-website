@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
@@ -8,15 +8,35 @@ const ProductList = () => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category') || '';
+  const onOffer = searchParams.get('onOffer') === 'true';
+  const bestSeller = searchParams.get('bestSeller') === 'true';
+  const newArrival = searchParams.get('newArrival') === 'true';
   const [products, setProducts] = useState([]);
 
+  const params = useMemo(() => {
+    const p = {};
+    if (category) p.category = category;
+    if (onOffer) p.onOffer = true;
+    if (bestSeller) p.bestSeller = true;
+    if (newArrival) p.newArrival = true;
+    return p;
+  }, [category, onOffer, bestSeller, newArrival]);
+
   useEffect(() => {
-    api.get('/products', { params: category ? { category } : {} }).then((res) => setProducts(res.data.products));
-  }, [category]);
+    api.get('/products', { params }).then((res) => setProducts(res.data.products));
+  }, [params]);
+
+  const heading = onOffer
+    ? t('home.offers')
+    : bestSeller
+      ? t('home.best_sellers')
+      : newArrival
+        ? t('home.new_arrivals')
+        : t('nav.shop');
 
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
-      <h1>{t('nav.shop')}</h1>
+      <h1>{heading}</h1>
       <div className="grid grid-products">
         {products.map((p) => (
           <ProductCard key={p.id} product={p} />

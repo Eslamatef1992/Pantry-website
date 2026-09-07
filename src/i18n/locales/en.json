@@ -15,7 +15,11 @@
     "hero_subtitle": "Quality groceries and pantry staples, ordered online in minutes.",
     "shop_now": "Shop Now",
     "featured": "Featured Products",
-    "categories": "Shop by Category"
+    "categories": "Shop by Category",
+    "offers": "Special Offers",
+    "best_sellers": "Best Sellers",
+    "new_arrivals": "New Arrivals",
+    "view_all": "View All"
   },
   "product": {
     "add_to_cart": "Add to Cart",

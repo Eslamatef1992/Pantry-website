@@ -246,3 +246,118 @@ button {
 [dir='rtl'] .navbar-links {
   flex-direction: row-reverse;
 }
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.section-heading a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  white-space: nowrap;
+}
+
+.banner-carousel {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  transition: opacity 0.6s ease;
+}
+
+.banner-overlay {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  width: 100%;
+  color: #fff;
+  padding: 30px 20px;
+}
+
+.banner-overlay h2 {
+  margin: 0 0 6px;
+  font-size: 1.6rem;
+}
+
+.banner-overlay p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+.banner-dots {
+  position: absolute;
+  bottom: 12px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+[dir='rtl'] .banner-dots {
+  right: auto;
+  left: 20px;
+}
+
+.banner-dots button {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0;
+}
+
+.banner-dots button.active {
+  background: #fff;
+}
+
+.product-card-media {
+  position: relative;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+[dir='rtl'] .discount-badge {
+  left: auto;
+  right: 8px;
+}
+
+.price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price-compare {
+  color: var(--color-muted);
+  text-decoration: line-through;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .banner-carousel {
+    height: 220px;
+  }
+}

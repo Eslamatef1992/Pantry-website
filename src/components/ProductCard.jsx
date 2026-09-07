@@ -1,8 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
   const { t, i18n } = useTranslation();
@@ -12,6 +11,11 @@ const ProductCard = ({ product }) => {
   const isAr = i18n.language === 'ar';
   const name = isAr ? product.nameAr : product.nameEn;
 
+  const hasDiscount = product.compareAtPrice && Number(product.compareAtPrice) > Number(product.price);
+  const discountPct = hasDiscount
+    ? Math.round(100 - (Number(product.price) / Number(product.compareAtPrice)) * 100)
+    : 0;
+
   const handleAdd = async (e) => {
     e.preventDefault();
     if (!user) return navigate('/login');
@@ -20,10 +24,16 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link to={`/product/${product.slug}`} className="card product-card">
-      <img src={product.image ? product.image : '/placeholder.svg'} alt={name} />
+      <div className="product-card-media">
+        <img src={product.image ? product.image : '/placeholder.svg'} alt={name} />
+        {hasDiscount && <span className="discount-badge">-{discountPct}%</span>}
+      </div>
       <div className="body">
         <strong>{name}</strong>
-        <span className="price">{Number(product.price).toFixed(3)} KWD</span>
+        <span className="price-row">
+          <span className="price">{Number(product.price).toFixed(3)} KWD</span>
+          {hasDiscount && <span className="price-compare">{Number(product.compareAtPrice).toFixed(3)}</span>}
+        </span>
         <button className="btn" disabled={product.stock <= 0} onClick={handleAdd}>
           {product.stock > 0 ? t('product.add_to_cart') : t('product.out_of_stock')}
         </button>
