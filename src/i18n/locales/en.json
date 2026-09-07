@@ -1,0 +1,75 @@
+{
+  "brand": "Makani Foods",
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart",
+    "orders": "My Orders",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "account": "Account"
+  },
+  "home": {
+    "hero_title": "Fresh pantry essentials, delivered across Kuwait",
+    "hero_subtitle": "Quality groceries and pantry staples, ordered online in minutes.",
+    "shop_now": "Shop Now",
+    "featured": "Featured Products",
+    "categories": "Shop by Category"
+  },
+  "product": {
+    "add_to_cart": "Add to Cart",
+    "out_of_stock": "Out of Stock",
+    "price": "Price",
+    "description": "Description",
+    "quantity": "Quantity"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "delivery": "Delivery Fee",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "remove": "Remove",
+    "continue_shopping": "Continue Shopping"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "address": "Delivery Address",
+    "payment_method": "Payment Method",
+    "place_order": "Place Order",
+    "full_name": "Full Name",
+    "phone": "Phone",
+    "governorate": "Governorate",
+    "area": "Area",
+    "block": "Block",
+    "street": "Street",
+    "building": "Building",
+    "floor_apartment": "Floor / Apartment",
+    "notes": "Order Notes (optional)",
+    "order_placed": "Order placed successfully!",
+    "order_number": "Order Number"
+  },
+  "auth": {
+    "login_title": "Login",
+    "register_title": "Create Account",
+    "name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?",
+    "sign_in": "Sign In",
+    "sign_up": "Sign Up"
+  },
+  "orders": {
+    "title": "My Orders",
+    "empty": "You haven't placed any orders yet",
+    "status": "Status",
+    "total": "Total",
+    "placed_on": "Placed on"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
