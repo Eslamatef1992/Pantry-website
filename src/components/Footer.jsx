@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        © {new Date().getFullYear()} {t('brand')} · Makani Foods. {t('footer.rights')}
+        © {new Date().getFullYear()} {t('brand')}. {t('footer.rights')}
       </div>
     </footer>
   );
