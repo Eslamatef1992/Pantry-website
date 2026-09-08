@@ -30,6 +30,7 @@ const Home = () => {
   const [offers, setOffers] = useState([]);
   const [bestSellers, setBestSellers] = useState([]);
   const [newArrivals, setNewArrivals] = useState([]);
+  const [bundles, setBundles] = useState([]);
   const isAr = i18n.language === 'ar';
 
   useEffect(() => {
@@ -38,6 +39,7 @@ const Home = () => {
     api.get('/products', { params: { onOffer: true, limit: 8 } }).then((res) => setOffers(res.data.products));
     api.get('/products', { params: { bestSeller: true, limit: 8 } }).then((res) => setBestSellers(res.data.products));
     api.get('/products', { params: { newArrival: true, limit: 8 } }).then((res) => setNewArrivals(res.data.products));
+    api.get('/products', { params: { bundle: true, limit: 8 } }).then((res) => setBundles(res.data.products));
   }, []);
 
   return (
@@ -70,6 +72,7 @@ const Home = () => {
       <ProductSection titleKey="home.offers" viewAllHref="/shop?onOffer=true" products={offers} />
       <ProductSection titleKey="home.best_sellers" viewAllHref="/shop?bestSeller=true" products={bestSellers} />
       <ProductSection titleKey="home.new_arrivals" viewAllHref="/shop?newArrival=true" products={newArrivals} />
+      <ProductSection titleKey="home.bundles" viewAllHref="/shop?bundle=true" products={bundles} />
 
       <div style={{ marginBottom: 40 }} />
     </div>

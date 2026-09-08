@@ -11,6 +11,7 @@ const ProductList = () => {
   const onOffer = searchParams.get('onOffer') === 'true';
   const bestSeller = searchParams.get('bestSeller') === 'true';
   const newArrival = searchParams.get('newArrival') === 'true';
+  const bundle = searchParams.get('bundle') === 'true';
   const [products, setProducts] = useState([]);
 
   const params = useMemo(() => {
@@ -19,8 +20,9 @@ const ProductList = () => {
     if (onOffer) p.onOffer = true;
     if (bestSeller) p.bestSeller = true;
     if (newArrival) p.newArrival = true;
+    if (bundle) p.bundle = true;
     return p;
-  }, [category, onOffer, bestSeller, newArrival]);
+  }, [category, onOffer, bestSeller, newArrival, bundle]);
 
   useEffect(() => {
     api.get('/products', { params }).then((res) => setProducts(res.data.products));
@@ -32,7 +34,9 @@ const ProductList = () => {
       ? t('home.best_sellers')
       : newArrival
         ? t('home.new_arrivals')
-        : t('nav.shop');
+        : bundle
+          ? t('home.bundles')
+          : t('nav.shop');
 
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
