@@ -54,7 +54,9 @@
     "floor_apartment": "Floor / Apartment",
     "notes": "Order Notes (optional)",
     "order_placed": "Order placed successfully!",
-    "order_number": "Order Number"
+    "order_number": "Order Number",
+    "email": "Email (optional)",
+    "guest_prompt": "Have an account? Log in for faster checkout and order tracking."
   },
   "auth": {
     "login_title": "Login",

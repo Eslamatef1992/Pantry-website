@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 
 const emptyAddress = {
   fullName: '',
   phone: '',
+  email: '',
   governorate: '',
   area: '',
   block: '',
@@ -17,7 +19,8 @@ const emptyAddress = {
 
 const Checkout = () => {
   const { t } = useTranslation();
-  const { cart, refreshCart } = useCart();
+  const { user } = useAuth();
+  const { cart, refreshCart, clearGuestCart, isGuest } = useCart();
   const navigate = useNavigate();
   const [address, setAddress] = useState(emptyAddress);
   const [methods, setMethods] = useState([]);
@@ -42,14 +45,35 @@ const Checkout = () => {
     e.preventDefault();
     setError('');
     try {
-      const addressRes = await api.post('/addresses', address);
-      const orderRes = await api.post('/orders', {
-        addressId: addressRes.data.id,
-        paymentMethod,
-        notes,
-      });
-      setPlacedOrder(orderRes.data);
-      await refreshCart();
+      if (user) {
+        const addressRes = await api.post('/addresses', address);
+        const orderRes = await api.post('/orders', {
+          addressId: addressRes.data.id,
+          paymentMethod,
+          notes,
+        });
+        setPlacedOrder(orderRes.data);
+        await refreshCart();
+      } else {
+        const orderRes = await api.post('/orders/guest', {
+          items: items.map((i) => ({ productId: i.productId, quantity: i.quantity })),
+          guestName: address.fullName,
+          guestPhone: address.phone,
+          guestEmail: address.email,
+          address: {
+            governorate: address.governorate,
+            area: address.area,
+            block: address.block,
+            street: address.street,
+            building: address.building,
+            floorApartment: address.floorApartment,
+          },
+          paymentMethod,
+          notes,
+        });
+        setPlacedOrder(orderRes.data);
+        clearGuestCart();
+      }
     } catch (err) {
       setError(err.response?.data?.message || 'Something went wrong');
     }
@@ -62,9 +86,15 @@ const Checkout = () => {
         <p>
           {t('checkout.order_number')}: <strong>{placedOrder.orderNumber}</strong>
         </p>
-        <button className="btn" onClick={() => navigate('/orders')}>
-          {t('nav.orders')}
-        </button>
+        {user ? (
+          <button className="btn" onClick={() => navigate('/orders')}>
+            {t('nav.orders')}
+          </button>
+        ) : (
+          <Link to="/shop" className="btn">
+            {t('cart.continue_shopping')}
+          </Link>
+        )}
       </div>
     );
   }
@@ -77,6 +107,11 @@ const Checkout = () => {
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
       <h1>{t('checkout.title')}</h1>
+      {isGuest && (
+        <p style={{ color: '#6b7280', marginBottom: 16 }}>
+          {t('checkout.guest_prompt')} <Link to="/login">{t('nav.login')}</Link>
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: 30, alignItems: 'start' }}>
         <div className="card" style={{ padding: 20 }}>
           <h3>{t('checkout.address')}</h3>
@@ -89,6 +124,12 @@ const Checkout = () => {
               <label>{t('checkout.phone')}</label>
               <input required value={address.phone} onChange={(e) => setAddress({ ...address, phone: e.target.value })} />
             </div>
+            {isGuest && (
+              <div className="form-group">
+                <label>{t('checkout.email')}</label>
+                <input type="email" value={address.email} onChange={(e) => setAddress({ ...address, email: e.target.value })} />
+              </div>
+            )}
             <div className="form-group">
               <label>{t('checkout.governorate')}</label>
               <input value={address.governorate} onChange={(e) => setAddress({ ...address, governorate: e.target.value })} />

@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const { t, i18n } = useTranslation();
   const { addToCart } = useCart();
-  const { user } = useAuth();
-  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [qty, setQty] = useState(1);
   const isAr = i18n.language === 'ar';
@@ -25,8 +22,7 @@ const ProductDetail = () => {
   const description = isAr ? product.descriptionAr : product.descriptionEn;
 
   const handleAdd = async () => {
-    if (!user) return navigate('/login');
-    await addToCart(product.id, qty);
+    await addToCart(product, qty);
   };
 
   return (

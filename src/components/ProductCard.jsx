@@ -1,13 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useCart } from '../context/CartContext';
-import { useAuth } from '../context/AuthContext';
 
 const ProductCard = ({ product }) => {
   const { t, i18n } = useTranslation();
   const { addToCart } = useCart();
-  const { user } = useAuth();
-  const navigate = useNavigate();
   const isAr = i18n.language === 'ar';
   const name = isAr ? product.nameAr : product.nameEn;
 
@@ -18,8 +15,7 @@ const ProductCard = ({ product }) => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
-    if (!user) return navigate('/login');
-    await addToCart(product.id, 1);
+    await addToCart(product, 1);
   };
 
   return (
