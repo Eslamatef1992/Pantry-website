@@ -577,3 +577,60 @@ button {
   font-size: 11px;
   color: var(--color-muted);
 }
+
+/* Icon-based nav (cart / account) */
+.navbar {
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.navbar-links {
+  gap: 18px;
+  white-space: nowrap;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+.icon-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+[dir='rtl'] .icon-badge {
+  right: auto;
+  left: -4px;
+}
+
+@media (max-width: 900px) {
+  .navbar-links {
+    display: none;
+  }
+}

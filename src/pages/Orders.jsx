@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
+import { useAuth } from '../context/AuthContext';
 
 const Orders = () => {
   const { t } = useTranslation();
+  const { logout } = useAuth();
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -14,13 +16,21 @@ const Orders = () => {
     return (
       <div className="container" style={{ marginTop: 40, textAlign: 'center' }}>
         <p>{t('orders.empty')}</p>
+        <button className="btn btn-outline" onClick={logout}>
+          {t('nav.logout')}
+        </button>
       </div>
     );
   }
 
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
-      <h1>{t('orders.title')}</h1>
+      <div className="toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>{t('orders.title')}</h1>
+        <button className="btn btn-outline" onClick={logout}>
+          {t('nav.logout')}
+        </button>
+      </div>
       {orders.map((o) => (
         <div key={o.id} className="card" style={{ padding: 16, marginBottom: 12 }}>
           <div className="summary-row">
