@@ -13,6 +13,14 @@ const ProductCard = ({ product }) => {
     ? Math.round(100 - (Number(product.price) / Number(product.compareAtPrice)) * 100)
     : 0;
 
+  const badge = product.isBestSeller
+    ? { key: 'best_seller', className: 'badge-best-seller' }
+    : product.isNewArrival
+    ? { key: 'new_arrival', className: 'badge-new-arrival' }
+    : product.isBundle
+    ? { key: 'bundle', className: 'badge-bundle' }
+    : null;
+
   const handleAdd = async (e) => {
     e.preventDefault();
     await addToCart(product, 1);
@@ -22,9 +30,15 @@ const ProductCard = ({ product }) => {
     <Link to={`/product/${product.slug}`} className="card product-card">
       <div className="product-card-media">
         <img src={product.image ? product.image : '/placeholder.svg'} alt={name} />
+        {badge && <span className={`product-badge ${badge.className}`}>{t(`product.${badge.key}`)}</span>}
         {hasDiscount && <span className="discount-badge">-{discountPct}%</span>}
       </div>
       <div className="body">
+        {product.sku && (
+          <span className="product-sku">
+            {t('product.sku')}: {product.sku}
+          </span>
+        )}
         <strong>{name}</strong>
         <span className="price-row">
           <span className="price">{Number(product.price).toFixed(3)} KWD</span>

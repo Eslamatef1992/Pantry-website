@@ -12,6 +12,7 @@ const ProductList = () => {
   const bestSeller = searchParams.get('bestSeller') === 'true';
   const newArrival = searchParams.get('newArrival') === 'true';
   const bundle = searchParams.get('bundle') === 'true';
+  const search = searchParams.get('search') || '';
   const [products, setProducts] = useState([]);
 
   const params = useMemo(() => {
@@ -21,14 +22,15 @@ const ProductList = () => {
     if (bestSeller) p.bestSeller = true;
     if (newArrival) p.newArrival = true;
     if (bundle) p.bundle = true;
+    if (search) p.search = search;
     return p;
-  }, [category, onOffer, bestSeller, newArrival, bundle]);
+  }, [category, onOffer, bestSeller, newArrival, bundle, search]);
 
   useEffect(() => {
     api.get('/products', { params }).then((res) => setProducts(res.data.products));
   }, [params]);
 
-  const heading = onOffer
+  const heading = search ? `${t('search_results')}: "${search}"` : onOffer
     ? t('home.offers')
     : bestSeller
       ? t('home.best_sellers')
