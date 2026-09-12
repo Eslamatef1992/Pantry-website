@@ -48,7 +48,10 @@
     "total": "الإجمالي",
     "checkout": "إتمام الطلب",
     "remove": "إزالة",
-    "continue_shopping": "متابعة التسوق"
+    "continue_shopping": "متابعة التسوق",
+    "drawer_title": "سلة التسوق",
+    "have_account": "لديك حساب؟",
+    "sign_in_faster": "لإتمام الشراء بشكل أسرع"
   },
   "checkout": {
     "title": "إتمام الطلب",

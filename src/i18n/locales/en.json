@@ -48,7 +48,10 @@
     "total": "Total",
     "checkout": "Proceed to Checkout",
     "remove": "Remove",
-    "continue_shopping": "Continue Shopping"
+    "continue_shopping": "Continue Shopping",
+    "drawer_title": "Shopping Cart",
+    "have_account": "Have an account?",
+    "sign_in_faster": "for a faster checkout"
   },
   "checkout": {
     "title": "Checkout",

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CartDrawer from './components/CartDrawer';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <Navbar />
+      <CartDrawer />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

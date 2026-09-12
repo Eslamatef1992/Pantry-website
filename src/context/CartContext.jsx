@@ -26,6 +26,10 @@ export const CartProvider = ({ children }) => {
   const { user } = useAuth();
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const openCart = () => setIsDrawerOpen(true);
+  const closeCart = () => setIsDrawerOpen(false);
 
   const refreshCart = useCallback(async () => {
     if (!user) {
@@ -56,10 +60,12 @@ export const CartProvider = ({ children }) => {
       const next = { items };
       saveGuestCart(next);
       setCart(next);
+      openCart();
       return;
     }
     const res = await api.post('/cart/items', { productId: product.id, quantity });
     setCart(res.data);
+    openCart();
   };
 
   const updateItem = async (itemId, quantity) => {
@@ -99,7 +105,20 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cart, loading, addToCart, updateItem, removeItem, refreshCart, clearGuestCart, itemCount, isGuest: !user }}
+      value={{
+        cart,
+        loading,
+        addToCart,
+        updateItem,
+        removeItem,
+        refreshCart,
+        clearGuestCart,
+        itemCount,
+        isGuest: !user,
+        isDrawerOpen,
+        openCart,
+        closeCart,
+      }}
     >
       {children}
     </CartContext.Provider>

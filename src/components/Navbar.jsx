@@ -10,7 +10,7 @@ const navLinkClass = ({ isActive }) => (isActive ? 'active' : '');
 const Navbar = () => {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { itemCount } = useCart();
+  const { itemCount, openCart } = useCart();
   const { wishlistCount } = useWishlist();
 
   return (
@@ -40,7 +40,13 @@ const Navbar = () => {
 
       <div className="navbar-icons">
         <LanguageSwitcher />
-        <Link to="/cart" className="icon-btn" aria-label={t('nav.cart')}>
+        <button
+          type="button"
+          onClick={openCart}
+          className="icon-btn"
+          aria-label={t('nav.cart')}
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+        >
           <svg width="26" height="24" viewBox="0 0 35 32" fill="none">
             <path
               d="M11.2 8.66667H20.8C25.3334 8.66667 25.7867 10.7867 26.0934 13.3733L27.2934 23.3733C27.68 26.6533 26.6667 29.3333 22 29.3333H10.0134C5.33337 29.3333 4.32003 26.6533 4.72003 23.3733L5.92004 13.3733C6.21338 10.7867 6.6667 8.66667 11.2 8.66667Z"
@@ -59,7 +65,7 @@ const Navbar = () => {
             <path d="M27.2134 22.7064H10.6667" stroke="#292D32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           {itemCount > 0 && <span className="icon-badge">{itemCount}</span>}
-        </Link>
+        </button>
         <Link to="/wishlist" className="icon-btn" aria-label={t('nav.wishlist')}>
           <svg width="27" height="24" viewBox="0 0 37 32" fill="none">
             <path
