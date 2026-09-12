@@ -140,6 +140,16 @@ button {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: #fff;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 14px rgba(10, 10, 10, 0.07);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 6px 20px rgba(10, 10, 10, 0.12);
+  transform: translateY(-2px);
 }
 
 .product-card img {
@@ -149,18 +159,31 @@ button {
   background: var(--color-bg-alt);
 }
 
+.product-card-divider {
+  height: 1px;
+  background: var(--color-border);
+  width: 100%;
+}
+
 .product-card .body {
-  padding: 12px;
+  padding: 14px 12px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
   flex: 1;
+}
+
+.product-card .body strong {
+  font-size: 15px;
+  color: var(--color-text);
 }
 
 .product-card .price {
   font-weight: 700;
   color: var(--color-accent);
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .form-group {
@@ -446,18 +469,18 @@ button {
 
 .wishlist-btn {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
+  bottom: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.92);
+  background: #fff;
   color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(10, 10, 10, 0.18);
 }
 
 .wishlist-btn.active {
@@ -799,14 +822,28 @@ button {
   color: #fff;
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
-  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
 }
 
 [dir='rtl'] .product-badge {
   left: auto;
   right: 8px;
+}
+
+.product-card .product-badge {
+  top: 0;
+  left: 0;
+  padding: 7px 16px 7px 13px;
+  font-size: 12px;
+  border-radius: 18px 4px 4px 4px;
+}
+
+[dir='rtl'] .product-card .product-badge {
+  left: auto;
+  right: 0;
+  padding: 7px 13px 7px 16px;
+  border-radius: 4px 18px 4px 4px;
 }
 
 .badge-best-seller {
@@ -823,7 +860,8 @@ button {
 
 .product-subtitle {
   font-size: 12px;
-  color: var(--color-muted);
+  color: var(--color-text);
+  opacity: 0.75;
 }
 
 /* Icon-based nav (cart / account) */

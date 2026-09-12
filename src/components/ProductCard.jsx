@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
 const ProductCard = ({ product }) => {
   const { t, i18n } = useTranslation();
-  const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const isAr = i18n.language === 'ar';
   const name = isAr ? product.nameAr : product.nameEn;
@@ -25,11 +23,6 @@ const ProductCard = ({ product }) => {
     : product.isBundle
     ? { key: 'bundle', className: 'badge-bundle' }
     : null;
-
-  const handleAdd = async (e) => {
-    e.preventDefault();
-    await addToCart(product, 1);
-  };
 
   const handleWishlist = async (e) => {
     e.preventDefault();
@@ -52,6 +45,7 @@ const ProductCard = ({ product }) => {
           </svg>
         </button>
       </div>
+      <div className="product-card-divider" />
       <div className="body">
         <strong>{name}</strong>
         {shortDescription && <span className="product-subtitle">{shortDescription}</span>}
@@ -64,9 +58,6 @@ const ProductCard = ({ product }) => {
             <span className="discount-pill">-{discountPct}%</span>
           </span>
         )}
-        <button className="btn" disabled={product.stock <= 0} onClick={handleAdd}>
-          {product.stock > 0 ? t('product.add_to_cart') : t('product.out_of_stock')}
-        </button>
       </div>
     </Link>
   );

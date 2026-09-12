@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { KUWAIT_GOVERNORATES } from '../data/kuwaitRegions';
 
 const emptyAddress = {
   fullName: '',
@@ -18,11 +19,24 @@ const emptyAddress = {
 };
 
 const Checkout = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { cart, refreshCart, clearGuestCart, isGuest } = useCart();
   const navigate = useNavigate();
   const [address, setAddress] = useState(emptyAddress);
+  const [governorateId, setGovernorateId] = useState('');
+  const isAr = i18n.language === 'ar';
+  const areaOptions = KUWAIT_GOVERNORATES.find((g) => g.id === governorateId)?.areas || [];
+
+  const handleGovernorateChange = (id) => {
+    const gov = KUWAIT_GOVERNORATES.find((g) => g.id === id);
+    setGovernorateId(id);
+    setAddress((prev) => ({ ...prev, governorate: gov ? (isAr ? gov.ar : gov.en) : '', area: '' }));
+  };
+
+  const handleAreaChange = (label) => {
+    setAddress((prev) => ({ ...prev, area: label }));
+  };
   const [methods, setMethods] = useState([]);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [notes, setNotes] = useState('');
@@ -132,11 +146,34 @@ const Checkout = () => {
             )}
             <div className="form-group">
               <label>{t('checkout.governorate')}</label>
-              <input value={address.governorate} onChange={(e) => setAddress({ ...address, governorate: e.target.value })} />
+              <select required value={governorateId} onChange={(e) => handleGovernorateChange(e.target.value)}>
+                <option value="" disabled>
+                  {t('checkout.select_governorate')}
+                </option>
+                {KUWAIT_GOVERNORATES.map((gov) => (
+                  <option key={gov.id} value={gov.id}>
+                    {isAr ? gov.ar : gov.en}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-group">
               <label>{t('checkout.area')}</label>
-              <input value={address.area} onChange={(e) => setAddress({ ...address, area: e.target.value })} />
+              <select
+                required
+                value={address.area}
+                onChange={(e) => handleAreaChange(e.target.value)}
+                disabled={!governorateId}
+              >
+                <option value="" disabled>
+                  {governorateId ? t('checkout.select_area') : t('checkout.select_governorate_first')}
+                </option>
+                {areaOptions.map((a) => (
+                  <option key={a.en} value={isAr ? a.ar : a.en}>
+                    {isAr ? a.ar : a.en}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-group">
               <label>{t('checkout.block')}</label>
