@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -11,13 +10,6 @@ const Navbar = () => {
   const { user } = useAuth();
   const { itemCount } = useCart();
   const { wishlistCount } = useWishlist();
-  const navigate = useNavigate();
-  const [query, setQuery] = useState('');
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (query.trim()) navigate(`/shop?search=${encodeURIComponent(query.trim())}`);
-  };
 
   return (
     <header className="container navbar">
@@ -33,16 +25,6 @@ const Navbar = () => {
         <Link to="/page/about-us">{t('nav.about')}</Link>
         <Link to="/page/contact-us">{t('nav.contact')}</Link>
       </nav>
-
-      <form className="navbar-search" onSubmit={handleSearch}>
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={t('search_placeholder')}
-        />
-        <button type="submit">{t('nav.search')}</button>
-      </form>
 
       <div className="navbar-icons">
         <LanguageSwitcher />

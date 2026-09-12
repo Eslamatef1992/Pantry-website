@@ -9,6 +9,8 @@ const ProductCard = ({ product }) => {
   const { isInWishlist, toggleWishlist } = useWishlist();
   const isAr = i18n.language === 'ar';
   const name = isAr ? product.nameAr : product.nameEn;
+  const description = isAr ? product.descriptionAr : product.descriptionEn;
+  const shortDescription = description && description.length > 46 ? `${description.slice(0, 46).trim()}...` : description;
   const inWishlist = isInWishlist(product.id);
 
   const hasDiscount = product.compareAtPrice && Number(product.compareAtPrice) > Number(product.price);
@@ -51,12 +53,8 @@ const ProductCard = ({ product }) => {
         </button>
       </div>
       <div className="body">
-        {product.sku && (
-          <span className="product-sku">
-            {t('product.sku')}: {product.sku}
-          </span>
-        )}
         <strong>{name}</strong>
+        {shortDescription && <span className="product-subtitle">{shortDescription}</span>}
         <span className="price-row">
           <span className="price">{Number(product.price).toFixed(3)} KWD</span>
         </span>

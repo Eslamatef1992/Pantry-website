@@ -1,13 +1,15 @@
 :root {
   --color-primary: #82cf00;
-  --color-primary-dark: #67a600;
-  --color-text: #1f2937;
-  --color-muted: #6b7280;
+  --color-primary-dark: #476300;
+  --color-accent: #e2931c;
+  --color-danger: #ff383c;
+  --color-text: #0a0a0a;
+  --color-muted: #939393;
   --color-bg: #ffffff;
   --color-bg-alt: #f7f8f6;
   --color-border: #e5e7eb;
   --radius: 10px;
-  --font: 'Segoe UI', Tahoma, Arial, sans-serif;
+  --font: 'Cairo', 'Segoe UI', Tahoma, Arial, sans-serif;
 }
 
 * {
@@ -146,7 +148,8 @@ button {
 
 .product-card .price {
   font-weight: 700;
-  color: var(--color-primary-dark);
+  color: var(--color-accent);
+  font-size: 17px;
 }
 
 .form-group {
@@ -198,10 +201,18 @@ button {
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 24px;
   padding-bottom: 24px;
+}
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1.4 1 220px;
 }
 
 .footer-brand {
@@ -216,11 +227,34 @@ button {
   height: 32px;
 }
 
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .footer-col {
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-size: 14px;
+  flex: 1 1 140px;
 }
 
 .footer-col h4 {
@@ -257,7 +291,7 @@ button {
 
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
 }
 
@@ -428,7 +462,7 @@ button {
 }
 
 .discount-pill {
-  background: #dc2626;
+  background: var(--color-danger);
   color: #fff;
   font-size: 11px;
   font-weight: 700;
@@ -677,7 +711,7 @@ button {
 }
 
 .badge-best-seller {
-  background: #1f2937;
+  background: var(--color-primary);
 }
 
 .badge-new-arrival {
@@ -688,8 +722,8 @@ button {
   background: #d97706;
 }
 
-.product-sku {
-  font-size: 11px;
+.product-subtitle {
+  font-size: 12px;
   color: var(--color-muted);
 }
 
