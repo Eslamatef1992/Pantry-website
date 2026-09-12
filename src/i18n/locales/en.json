@@ -167,5 +167,16 @@
     "no_results": "No products match your filters",
     "filters": "Filters",
     "close": "Close"
+  },
+  "contact_form": {
+    "title": "Send us a message",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Thanks! Your message has been sent.",
+    "error": "Something went wrong. Please try again."
   }
 }
