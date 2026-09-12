@@ -1073,15 +1073,91 @@ button {
   font-weight: 600;
 }
 
+.shop-filters-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.shop-filters-mobile-header {
+  display: none;
+}
+
+.shop-filters-backdrop {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .shop-layout {
     flex-direction: column;
   }
 
+  .shop-filters-toggle {
+    display: inline-flex;
+  }
+
   .shop-filters {
-    width: 100%;
-    flex: 1 1 auto;
-    position: static;
+    display: none;
+    width: 86%;
+    max-width: 340px;
+    flex: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    border-radius: 0;
+    z-index: 50;
+    box-shadow: 4px 0 24px rgba(10, 10, 10, 0.15);
+  }
+
+  [dir='rtl'] .shop-filters {
+    left: auto;
+    right: 0;
+  }
+
+  .shop-filters.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop-filters-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .shop-filters-mobile-header h3 {
+    margin-bottom: 0;
+  }
+
+  .shop-filters-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    color: var(--color-muted);
+    cursor: pointer;
+    padding: 0 4px;
+  }
+
+  .shop-filters-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.45);
+    z-index: 45;
   }
 }
 
@@ -1352,9 +1428,13 @@ button {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 12px;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
+  background-origin: content-box;
   background-color: var(--color-bg-alt);
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .static-page-content {

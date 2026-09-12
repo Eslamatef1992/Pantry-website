@@ -6,7 +6,7 @@ import api from '../api/axios';
 const PRICE_MIN = 0;
 const PRICE_MAX = 50;
 
-const CategoryFilterSidebar = () => {
+const CategoryFilterSidebar = ({ isOpen = false, onClose = () => {} }) => {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === 'ar';
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,6 +32,7 @@ const CategoryFilterSidebar = () => {
       next.delete('category');
     }
     setSearchParams(next);
+    onClose();
   };
 
   const applyPrice = () => {
@@ -39,6 +40,7 @@ const CategoryFilterSidebar = () => {
     next.set('minPrice', priceMin);
     next.set('maxPrice', priceMax);
     setSearchParams(next);
+    onClose();
   };
 
   const handleMinChange = (value) => {
@@ -55,7 +57,15 @@ const CategoryFilterSidebar = () => {
   const maxPct = ((priceMax - PRICE_MIN) / (PRICE_MAX - PRICE_MIN)) * 100;
 
   return (
-    <aside className="shop-filters card">
+    <>
+      {isOpen && <div className="shop-filters-backdrop" onClick={onClose} />}
+      <aside className={`shop-filters card${isOpen ? ' open' : ''}`}>
+        <div className="shop-filters-mobile-header">
+          <h3>{t('shop_filters.filters')}</h3>
+          <button type="button" className="shop-filters-close" onClick={onClose} aria-label={t('shop_filters.close')}>
+            &times;
+          </button>
+        </div>
       <div className="shop-filters-section">
         <h3>{t('shop_filters.categories')}</h3>
         <ul className="filter-category-list">
@@ -115,7 +125,8 @@ const CategoryFilterSidebar = () => {
           <span>{priceMax.toFixed(3)} KWD</span>
         </div>
       </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 
