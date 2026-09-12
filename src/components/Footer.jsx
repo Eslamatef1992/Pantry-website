@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
+import visaIcon from '../assets/payment-visa.svg';
+import mastercardIcon from '../assets/payment-mastercard.svg';
 
 const PhoneIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -99,8 +101,8 @@ const Footer = () => {
           © {new Date().getFullYear()} {t('brand')}. {t('footer.rights')}
         </span>
         <span className="footer-payment">
-          <span>VISA</span>
-          <span>MASTERCARD</span>
+          <img src={visaIcon} alt="Visa" />
+          <img src={mastercardIcon} alt="Mastercard" />
         </span>
       </div>
     </footer>

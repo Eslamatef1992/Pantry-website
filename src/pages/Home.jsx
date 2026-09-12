@@ -82,6 +82,7 @@ const Home = () => {
               <div className="hero-card-overlay">
                 {main.titleEn && <h2>{isAr ? main.titleAr : main.titleEn}</h2>}
                 {main.subtitleEn && <p>{isAr ? main.subtitleAr : main.subtitleEn}</p>}
+                <span className="hero-shop-btn">{t('home.shop_now')}</span>
               </div>
             )}
           </Link>
