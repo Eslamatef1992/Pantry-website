@@ -117,5 +117,35 @@
   "brands_page": {
     "title": "Brands",
     "empty": "No brands yet"
+  },
+  "account": {
+    "nav_info": "Account information",
+    "nav_security": "Password & security",
+    "nav_address": "My address",
+    "personal_info": "Personal information",
+    "full_name": "Full name",
+    "email": "Email",
+    "mobile_number": "Mobile number",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "saved": "Saved successfully",
+    "save_failed": "Something went wrong, please try again",
+    "password_security": "Password & security",
+    "current_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm new password",
+    "password_mismatch": "New password and confirmation do not match",
+    "password_updated": "Password updated successfully",
+    "my_addresses": "My address",
+    "add_address": "Add new address",
+    "address_label": "Address label",
+    "address_label_placeholder": "e.g. Home, Work",
+    "set_as_default": "Set as default",
+    "default": "Default",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirm_delete_address": "Delete this address?",
+    "no_addresses": "You haven't added any addresses yet"
   }
 }

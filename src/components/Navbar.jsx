@@ -78,7 +78,7 @@ const Navbar = () => {
           </svg>
           {wishlistCount > 0 && <span className="icon-badge">{wishlistCount}</span>}
         </Link>
-        <Link to={user ? '/orders' : '/login'} className="icon-btn" aria-label={t('nav.account')}>
+        <Link to={user ? '/account' : '/login'} className="icon-btn" aria-label={t('nav.account')}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#292D32" strokeWidth="1.8">
             <circle cx="12" cy="8" r="3.5" />
             <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />

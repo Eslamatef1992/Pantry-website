@@ -15,6 +15,10 @@ import NotFound from './pages/NotFound';
 import Wishlist from './pages/Wishlist';
 import Brands from './pages/Brands';
 import StaticPage from './pages/StaticPage';
+import AccountLayout from './components/AccountLayout';
+import AccountProfile from './pages/AccountProfile';
+import AccountSecurity from './pages/AccountSecurity';
+import AccountAddresses from './pages/AccountAddresses';
 
 function App() {
   return (
@@ -41,6 +45,18 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/account"
+            element={
+              <PrivateRoute>
+                <AccountLayout />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<AccountProfile />} />
+            <Route path="security" element={<AccountSecurity />} />
+            <Route path="address" element={<AccountAddresses />} />
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -117,5 +117,35 @@
   "brands_page": {
     "title": "الماركات",
     "empty": "لا توجد ماركات بعد"
+  },
+  "account": {
+    "nav_info": "معلومات الحساب",
+    "nav_security": "كلمة المرور والأمان",
+    "nav_address": "عنواني",
+    "personal_info": "المعلومات الشخصية",
+    "full_name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "mobile_number": "رقم الجوال",
+    "save": "حفظ",
+    "saving": "جارِ الحفظ...",
+    "cancel": "إلغاء",
+    "saved": "تم الحفظ بنجاح",
+    "save_failed": "حدث خطأ ما، حاول مرة أخرى",
+    "password_security": "كلمة المرور والأمان",
+    "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "confirm_password": "تأكيد كلمة المرور الجديدة",
+    "password_mismatch": "كلمة المرور الجديدة والتأكيد غير متطابقين",
+    "password_updated": "تم تحديث كلمة المرور بنجاح",
+    "my_addresses": "عنواني",
+    "add_address": "إضافة عنوان جديد",
+    "address_label": "اسم العنوان",
+    "address_label_placeholder": "مثال: المنزل، العمل",
+    "set_as_default": "تعيين كافتراضي",
+    "default": "افتراضي",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "confirm_delete_address": "حذف هذا العنوان؟",
+    "no_addresses": "لم تقم بإضافة أي عناوين بعد"
   }
 }
