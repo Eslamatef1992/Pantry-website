@@ -5,6 +5,7 @@ import api from '../api/axios';
 import ProductCard from '../components/ProductCard';
 import BannerCarousel from '../components/BannerCarousel';
 import Rail, { RailArrows } from '../components/Rail';
+import HomeSearchBar from '../components/HomeSearchBar';
 
 const ProductSection = ({ titleKey, viewAllHref, products, alt }) => {
   const { t } = useTranslation();
@@ -120,6 +121,7 @@ const Home = () => {
 
   return (
     <div>
+      <HomeSearchBar />
       {renderHero()}
 
       <section className="container" style={{ marginTop: 40 }}>

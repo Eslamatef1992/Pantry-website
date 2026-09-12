@@ -158,5 +158,12 @@
     "delete": "Delete",
     "confirm_delete_address": "Delete this address?",
     "no_addresses": "You haven't added any addresses yet"
+  },
+  "shop_filters": {
+    "categories": "Categories",
+    "all_categories": "All Categories",
+    "price": "Price",
+    "apply": "Apply",
+    "no_results": "No products match your filters"
   }
 }

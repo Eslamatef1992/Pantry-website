@@ -158,5 +158,12 @@
     "delete": "حذف",
     "confirm_delete_address": "حذف هذا العنوان؟",
     "no_addresses": "لم تقم بإضافة أي عناوين بعد"
+  },
+  "shop_filters": {
+    "categories": "الفئات",
+    "all_categories": "جميع الفئات",
+    "price": "السعر",
+    "apply": "تطبيق",
+    "no_results": "لا توجد منتجات مطابقة لعوامل التصفية"
   }
 }

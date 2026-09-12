@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api from '../api/axios';
 import ProductCard from '../components/ProductCard';
+import CategoryFilterSidebar from '../components/CategoryFilterSidebar';
 
 const ProductList = () => {
   const { t } = useTranslation();
@@ -14,6 +15,8 @@ const ProductList = () => {
   const newArrival = searchParams.get('newArrival') === 'true';
   const bundle = searchParams.get('bundle') === 'true';
   const search = searchParams.get('search') || '';
+  const minPrice = searchParams.get('minPrice') || '';
+  const maxPrice = searchParams.get('maxPrice') || '';
   const [products, setProducts] = useState([]);
 
   const params = useMemo(() => {
@@ -25,8 +28,10 @@ const ProductList = () => {
     if (newArrival) p.newArrival = true;
     if (bundle) p.bundle = true;
     if (search) p.search = search;
+    if (minPrice) p.minPrice = minPrice;
+    if (maxPrice) p.maxPrice = maxPrice;
     return p;
-  }, [category, brand, onOffer, bestSeller, newArrival, bundle, search]);
+  }, [category, brand, onOffer, bestSeller, newArrival, bundle, search, minPrice, maxPrice]);
 
   useEffect(() => {
     api.get('/products', { params }).then((res) => setProducts(res.data.products));
@@ -45,10 +50,19 @@ const ProductList = () => {
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
       <h1>{heading}</h1>
-      <div className="grid grid-products">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
-        ))}
+      <div className="shop-layout">
+        <CategoryFilterSidebar />
+        <div className="shop-layout-main">
+          {!products.length ? (
+            <p>{t('shop_filters.no_results')}</p>
+          ) : (
+            <div className="grid grid-products">
+              {products.map((p) => (
+                <ProductCard key={p.id} product={p} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
