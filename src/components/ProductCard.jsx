@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 
 const ProductCard = ({ product }) => {
   const { t, i18n } = useTranslation();
+  const { addToCart } = useCart();
   const { isInWishlist, toggleWishlist } = useWishlist();
   const isAr = i18n.language === 'ar';
   const name = isAr ? product.nameAr : product.nameEn;
@@ -27,6 +29,11 @@ const ProductCard = ({ product }) => {
   const handleWishlist = async (e) => {
     e.preventDefault();
     await toggleWishlist(product);
+  };
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    await addToCart(product, 1);
   };
 
   return (
@@ -58,6 +65,9 @@ const ProductCard = ({ product }) => {
             <span className="discount-pill">-{discountPct}%</span>
           </span>
         )}
+        <button className="btn product-card-add-btn" disabled={product.stock <= 0} onClick={handleAdd}>
+          {product.stock > 0 ? t('product.add_to_cart') : t('product.out_of_stock')}
+        </button>
       </div>
     </Link>
   );
