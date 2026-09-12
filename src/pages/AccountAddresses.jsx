@@ -118,7 +118,7 @@ const AccountAddresses = () => {
 
       {showForm && (
         <form onSubmit={handleSubmit} className="account-form">
-          <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          <div className="grid account-address-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="form-group">
               <label>{t('account.address_label')}</label>
               <input

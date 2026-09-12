@@ -25,7 +25,7 @@ const Cart = () => {
   return (
     <div className="container" style={{ marginTop: 30, marginBottom: 40 }}>
       <h1>{t('cart.title')}</h1>
-      <div className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: 30, alignItems: 'start' }}>
+      <div className="grid cart-grid" style={{ gridTemplateColumns: '2fr 1fr', gap: 30, alignItems: 'start' }}>
         <div className="card" style={{ padding: 16 }}>
           {items.map((item) => (
             <div className="cart-row" key={item.id}>

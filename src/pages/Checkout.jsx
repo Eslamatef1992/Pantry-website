@@ -126,10 +126,14 @@ const Checkout = () => {
           {t('checkout.guest_prompt')} <Link to="/login">{t('nav.login')}</Link>
         </p>
       )}
-      <form onSubmit={handleSubmit} className="grid" style={{ gridTemplateColumns: '2fr 1fr', gap: 30, alignItems: 'start' }}>
+      <form
+        onSubmit={handleSubmit}
+        className="grid checkout-grid"
+        style={{ gridTemplateColumns: '2fr 1fr', gap: 30, alignItems: 'start' }}
+      >
         <div className="card" style={{ padding: 20 }}>
           <h3>{t('checkout.address')}</h3>
-          <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          <div className="grid checkout-address-grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 12 }}>
             <div className="form-group">
               <label>{t('checkout.full_name')}</label>
               <input required value={address.fullName} onChange={(e) => setAddress({ ...address, fullName: e.target.value })} />

@@ -535,8 +535,21 @@ button {
     font-size: 1.3rem;
   }
 
-  .order-detail-grid {
+  .order-detail-grid,
+  .checkout-grid,
+  .cart-grid {
     grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-address-grid,
+  .account-address-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .summary-row {
+    font-size: 14px;
   }
 }
 
