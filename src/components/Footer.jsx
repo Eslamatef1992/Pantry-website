@@ -98,7 +98,10 @@ const Footer = () => {
         <span>
           © {new Date().getFullYear()} {t('brand')}. {t('footer.rights')}
         </span>
-        <span className="footer-payment">VISA · MASTERCARD</span>
+        <span className="footer-payment">
+          <span>VISA</span>
+          <span>MASTERCARD</span>
+        </span>
       </div>
     </footer>
   );

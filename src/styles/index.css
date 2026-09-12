@@ -1,7 +1,8 @@
 :root {
   --color-primary: #82cf00;
   --color-primary-dark: #476300;
-  --color-accent: #e2931c;
+  --color-accent: #ba0101;
+  --color-band: #f7fff1;
   --color-danger: #ff383c;
   --color-text: #0a0a0a;
   --color-muted: #939393;
@@ -193,9 +194,8 @@ button {
 }
 
 .footer {
-  border-top: 1px solid var(--color-border);
-  background: #1f2937;
-  color: #e5e7eb;
+  background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+  color: #fff;
   margin-top: 60px;
   padding: 36px 0 0;
 }
@@ -235,9 +235,9 @@ button {
 .footer-social a {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--color-primary-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +264,7 @@ button {
 }
 
 .footer-col a {
-  color: #cbd5e1;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-col a:hover {
@@ -277,16 +277,25 @@ button {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
   padding: 16px 0;
   font-size: 13px;
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .footer-payment {
-  letter-spacing: 0.5px;
-  font-weight: 600;
-  color: #cbd5e1;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.footer-payment span {
+  background: #fff;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 @media (max-width: 640px) {
@@ -688,6 +697,18 @@ button {
   margin-top: 12px;
 }
 
+.product-band {
+  padding: 40px 0;
+}
+
+.product-band-alt {
+  background: var(--color-band);
+}
+
+.product-band .section-heading {
+  margin-bottom: 4px;
+}
+
 .rail-products .rail-item {
   flex: 0 0 auto;
   width: 220px;
@@ -781,5 +802,50 @@ button {
 @media (max-width: 900px) {
   .navbar-links {
     display: none;
+  }
+}
+
+.promo-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(120deg, var(--color-primary) 55%, #fff 55%);
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 32px 40px;
+  gap: 20px;
+  color: #fff;
+  min-height: 160px;
+}
+
+.promo-strip-text h2 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.promo-strip-text p {
+  margin: 0 0 16px;
+  opacity: 0.95;
+}
+
+.promo-strip-btn {
+  background: #fff;
+  color: var(--color-primary-dark);
+}
+
+.promo-strip-image {
+  max-height: 140px;
+  object-fit: contain;
+}
+
+[dir='rtl'] .promo-strip {
+  background: linear-gradient(240deg, var(--color-primary) 55%, #fff 55%);
+}
+
+@media (max-width: 640px) {
+  .promo-strip {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px;
   }
 }

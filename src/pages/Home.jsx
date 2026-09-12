@@ -6,26 +6,47 @@ import ProductCard from '../components/ProductCard';
 import BannerCarousel from '../components/BannerCarousel';
 import Rail, { RailArrows } from '../components/Rail';
 
-const ProductSection = ({ titleKey, viewAllHref, products }) => {
+const ProductSection = ({ titleKey, viewAllHref, products, alt }) => {
   const { t } = useTranslation();
   const railRef = useRef(null);
   if (!products.length) return null;
   return (
-    <section className="container" style={{ marginTop: 40 }}>
-      <div className="section-heading">
-        <h2>{t(titleKey)}</h2>
-        <div className="section-heading-actions">
-          <Link to={viewAllHref}>{t('home.view_all')} →</Link>
-          <RailArrows railRef={railRef} />
-        </div>
-      </div>
-      <Rail ref={railRef} className="rail-products">
-        {products.map((p) => (
-          <div className="rail-item" key={p.id}>
-            <ProductCard product={p} />
+    <section className={`product-band ${alt ? 'product-band-alt' : ''}`}>
+      <div className="container">
+        <div className="section-heading">
+          <h2>{t(titleKey)}</h2>
+          <div className="section-heading-actions">
+            <Link to={viewAllHref}>{t('home.view_all')} →</Link>
+            <RailArrows railRef={railRef} />
           </div>
-        ))}
-      </Rail>
+        </div>
+        <Rail ref={railRef} className="rail-products">
+          {products.map((p) => (
+            <div className="rail-item" key={p.id}>
+              <ProductCard product={p} />
+            </div>
+          ))}
+        </Rail>
+      </div>
+    </section>
+  );
+};
+
+const PromoStrip = ({ banner, isAr }) => {
+  const { t } = useTranslation();
+  if (!banner) return null;
+  const title = isAr ? banner.titleAr : banner.titleEn;
+  const subtitle = isAr ? banner.subtitleAr : banner.subtitleEn;
+  return (
+    <section className="container" style={{ marginTop: 8, marginBottom: 8 }}>
+      <Link to={banner.linkUrl || '/shop'} className="promo-strip">
+        <div className="promo-strip-text">
+          {title && <h2>{title}</h2>}
+          {subtitle && <p>{subtitle}</p>}
+          <span className="btn promo-strip-btn">{t('home.shop_now')}</span>
+        </div>
+        {banner.image && <img src={banner.image} alt={title || ''} className="promo-strip-image" />}
+      </Link>
     </section>
   );
 };
@@ -92,6 +113,10 @@ const Home = () => {
     );
   };
 
+  // A 4th active banner (beyond the 3 used in the hero grid) doubles as the
+  // mid-page promo strip, reusing the same admin-managed Banner content.
+  const promoBanner = banners.length >= 4 ? banners[3] : null;
+
   return (
     <div>
       {renderHero()}
@@ -123,10 +148,13 @@ const Home = () => {
         </Rail>
       </section>
 
-      <ProductSection titleKey="home.offers" viewAllHref="/shop?onOffer=true" products={offers} />
+      <ProductSection titleKey="home.new_arrivals" viewAllHref="/shop?newArrival=true" products={newArrivals} alt />
       <ProductSection titleKey="home.best_sellers" viewAllHref="/shop?bestSeller=true" products={bestSellers} />
-      <ProductSection titleKey="home.new_arrivals" viewAllHref="/shop?newArrival=true" products={newArrivals} />
-      <ProductSection titleKey="home.bundles" viewAllHref="/shop?bundle=true" products={bundles} />
+
+      <PromoStrip banner={promoBanner} isAr={isAr} />
+
+      <ProductSection titleKey="home.bundles" viewAllHref="/shop?bundle=true" products={bundles} alt />
+      <ProductSection titleKey="home.offers" viewAllHref="/shop?onOffer=true" products={offers} />
 
       <div style={{ marginBottom: 40 }} />
     </div>
