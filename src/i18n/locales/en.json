@@ -10,7 +10,11 @@
     "logout": "Logout",
     "account": "Account",
     "search": "Search",
-    "categories": "Categories"
+    "categories": "Categories",
+    "wishlist": "Wishlist",
+    "brands": "Brands",
+    "about": "About Us",
+    "contact": "Contact Us"
   },
   "home": {
     "hero_title": "Fresh pantry essentials, delivered across Kuwait",
@@ -22,7 +26,8 @@
     "best_sellers": "Best Sellers",
     "new_arrivals": "New Arrivals",
     "view_all": "View All",
-    "bundles": "Bundles & Combos"
+    "bundles": "Bundles & Combos",
+    "category_products": "{{count}} Products"
   },
   "product": {
     "add_to_cart": "Add to Cart",
@@ -83,8 +88,20 @@
     "placed_on": "Placed on"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "quick_links": "Quick Links",
+    "conditions": "Conditions",
+    "privacy_policy": "Privacy Policy",
+    "terms": "Terms & Conditions"
   },
   "search_results": "Search results",
-  "search_placeholder": "Search products..."
+  "search_placeholder": "Search products...",
+  "wishlist": {
+    "title": "My Wishlist",
+    "empty": "Your wishlist is empty"
+  },
+  "brands_page": {
+    "title": "Brands",
+    "empty": "No brands yet"
+  }
 }

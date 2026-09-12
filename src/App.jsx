@@ -11,6 +11,9 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Orders from './pages/Orders';
 import NotFound from './pages/NotFound';
+import Wishlist from './pages/Wishlist';
+import Brands from './pages/Brands';
+import StaticPage from './pages/StaticPage';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/shop" element={<ProductList />} />
           <Route path="/product/:slug" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/brands" element={<Brands />} />
+          <Route path="/page/:slug" element={<StaticPage />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

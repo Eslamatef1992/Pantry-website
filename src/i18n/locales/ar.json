@@ -10,7 +10,11 @@
     "logout": "تسجيل الخروج",
     "account": "الحساب",
     "search": "بحث",
-    "categories": "الفئات"
+    "categories": "الفئات",
+    "wishlist": "المفضلة",
+    "brands": "الماركات",
+    "about": "نبذة عنا",
+    "contact": "تواصل معنا"
   },
   "home": {
     "hero_title": "أساسيات المطبخ الطازجة، توصيل لكل الكويت",
@@ -22,7 +26,8 @@
     "best_sellers": "الأكثر مبيعاً",
     "new_arrivals": "وصل حديثاً",
     "view_all": "عرض الكل",
-    "bundles": "باقات وعروض مجمعة"
+    "bundles": "باقات وعروض مجمعة",
+    "category_products": "{{count}} منتج"
   },
   "product": {
     "add_to_cart": "أضف إلى السلة",
@@ -83,8 +88,20 @@
     "placed_on": "تاريخ الطلب"
   },
   "footer": {
-    "rights": "جميع الحقوق محفوظة."
+    "rights": "جميع الحقوق محفوظة.",
+    "quick_links": "روابط مهمة",
+    "conditions": "الشروط",
+    "privacy_policy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام"
   },
   "search_results": "نتائج البحث",
-  "search_placeholder": "ابحث عن منتجات..."
+  "search_placeholder": "ابحث عن منتجات...",
+  "wishlist": {
+    "title": "المفضلة",
+    "empty": "قائمة المفضلة فارغة"
+  },
+  "brands_page": {
+    "title": "الماركات",
+    "empty": "لا توجد ماركات بعد"
+  }
 }

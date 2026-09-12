@@ -8,6 +8,7 @@ const ProductList = () => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category') || '';
+  const brand = searchParams.get('brand') || '';
   const onOffer = searchParams.get('onOffer') === 'true';
   const bestSeller = searchParams.get('bestSeller') === 'true';
   const newArrival = searchParams.get('newArrival') === 'true';
@@ -18,13 +19,14 @@ const ProductList = () => {
   const params = useMemo(() => {
     const p = {};
     if (category) p.category = category;
+    if (brand) p.brand = brand;
     if (onOffer) p.onOffer = true;
     if (bestSeller) p.bestSeller = true;
     if (newArrival) p.newArrival = true;
     if (bundle) p.bundle = true;
     if (search) p.search = search;
     return p;
-  }, [category, onOffer, bestSeller, newArrival, bundle, search]);
+  }, [category, brand, onOffer, bestSeller, newArrival, bundle, search]);
 
   useEffect(() => {
     api.get('/products', { params }).then((res) => setProducts(res.data.products));

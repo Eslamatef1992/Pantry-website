@@ -191,11 +191,74 @@ button {
 
 .footer {
   border-top: 1px solid var(--color-border);
-  padding: 24px 0;
-  color: var(--color-muted);
-  font-size: 14px;
-  text-align: center;
+  background: #1f2937;
+  color: #e5e7eb;
   margin-top: 60px;
+  padding: 36px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 24px;
+  padding-bottom: 24px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.footer-brand img {
+  height: 32px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.footer-col h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.footer-col a {
+  color: #cbd5e1;
+}
+
+.footer-col a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.footer-payment {
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cart-row {
@@ -327,21 +390,29 @@ button {
   position: relative;
 }
 
-.discount-badge {
+.wishlist-btn {
   position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #dc2626;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 6px;
+  bottom: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-[dir='rtl'] .discount-badge {
-  left: auto;
-  right: 8px;
+.wishlist-btn.active {
+  color: #dc2626;
+}
+
+[dir='rtl'] .wishlist-btn {
+  right: auto;
+  left: 8px;
 }
 
 .price-row {
@@ -354,6 +425,15 @@ button {
   color: var(--color-muted);
   text-decoration: line-through;
   font-size: 13px;
+}
+
+.discount-pill {
+  background: #dc2626;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
 }
 
 @media (max-width: 640px) {
@@ -537,6 +617,41 @@ button {
   color: #fff;
   font-weight: 700;
   padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category-card-label small {
+  font-weight: 500;
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.brand-card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--color-bg-alt);
+}
+
+.static-page-content {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-top: 12px;
 }
 
 .rail-products .rail-item {

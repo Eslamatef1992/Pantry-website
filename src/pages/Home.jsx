@@ -43,7 +43,7 @@ const Home = () => {
 
   useEffect(() => {
     api.get('/banners').then((res) => setBanners(res.data));
-    api.get('/categories').then((res) => setCategories(res.data));
+    api.get('/categories', { params: { withCounts: true } }).then((res) => setCategories(res.data));
     api.get('/products', { params: { onOffer: true, limit: 8 } }).then((res) => setOffers(res.data.products));
     api.get('/products', { params: { bestSeller: true, limit: 8 } }).then((res) => setBestSellers(res.data.products));
     api.get('/products', { params: { newArrival: true, limit: 8 } }).then((res) => setNewArrivals(res.data.products));
@@ -112,7 +112,12 @@ const Home = () => {
               className="category-card"
               style={c.image ? { backgroundImage: `url(${c.image})` } : undefined}
             >
-              <span className="category-card-label">{isAr ? c.nameAr : c.nameEn}</span>
+              <span className="category-card-label">
+                <strong>{isAr ? c.nameAr : c.nameEn}</strong>
+                {typeof c.productCount === 'number' && (
+                  <small>{t('home.category_products', { count: c.productCount })}</small>
+                )}
+              </span>
             </Link>
           ))}
         </Rail>
