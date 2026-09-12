@@ -97,7 +97,18 @@
     "empty": "You haven't placed any orders yet",
     "status": "Status",
     "total": "Total",
-    "placed_on": "Placed on"
+    "placed_on": "Placed on",
+    "status_pending": "Pending",
+    "status_confirmed": "Confirmed",
+    "status_processing": "Processing",
+    "status_out_for_delivery": "Out for delivery",
+    "status_delivered": "Delivered",
+    "status_cancelled": "Cancelled",
+    "not_found": "Order not found",
+    "back_to_orders": "Back to orders",
+    "items": "Items",
+    "qty": "Qty",
+    "shipping_address": "Shipping address"
   },
   "footer": {
     "rights": "All rights reserved.",

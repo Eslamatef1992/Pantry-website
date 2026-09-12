@@ -11,6 +11,7 @@ import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Orders from './pages/Orders';
+import OrderDetail from './pages/OrderDetail';
 import NotFound from './pages/NotFound';
 import Wishlist from './pages/Wishlist';
 import Brands from './pages/Brands';
@@ -42,6 +43,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Orders />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/orders/:id"
+            element={
+              <PrivateRoute>
+                <OrderDetail />
               </PrivateRoute>
             }
           />

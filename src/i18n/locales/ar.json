@@ -97,7 +97,18 @@
     "empty": "لم تقم بتقديم أي طلبات بعد",
     "status": "الحالة",
     "total": "الإجمالي",
-    "placed_on": "تاريخ الطلب"
+    "placed_on": "تاريخ الطلب",
+    "status_pending": "قيد الانتظار",
+    "status_confirmed": "تم التأكيد",
+    "status_processing": "قيد المعالجة",
+    "status_out_for_delivery": "قيد التوصيل",
+    "status_delivered": "تم التوصيل",
+    "status_cancelled": "ملغي",
+    "not_found": "الطلب غير موجود",
+    "back_to_orders": "العودة إلى الطلبات",
+    "items": "المنتجات",
+    "qty": "الكمية",
+    "shipping_address": "عنوان التوصيل"
   },
   "footer": {
     "rights": "جميع الحقوق محفوظة.",
