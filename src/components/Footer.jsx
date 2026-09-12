@@ -105,6 +105,11 @@ const Footer = () => {
           <img src={mastercardIcon} alt="Mastercard" />
         </span>
       </div>
+      <div className="container footer-powered">
+        <a href="https://teknulugy.com" target="_blank" rel="noreferrer">
+          {t('footer.powered_by')} Teknulugy
+        </a>
+      </div>
     </footer>
   );
 };

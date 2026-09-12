@@ -38,7 +38,13 @@
     "sku": "رمز المنتج",
     "best_seller": "الأكثر مبيعاً",
     "new_arrival": "وصل حديثاً",
-    "bundle": "باقة"
+    "bundle": "باقة",
+    "buy_now": "اشترِ الآن",
+    "available": "متوفر",
+    "unavailable": "غير متوفر",
+    "stock_available": "الكمية المتوفرة: {{count}}",
+    "specifications": "مواصفات إضافية",
+    "home": "الرئيسية"
   },
   "cart": {
     "title": "سلتك",
@@ -96,7 +102,8 @@
     "conditions": "الشروط",
     "privacy_policy": "سياسة الخصوصية",
     "terms": "الشروط والأحكام",
-    "contact_with": "تواصل معنا"
+    "contact_with": "تواصل معنا",
+    "powered_by": "بدعم من"
   },
   "search_results": "نتائج البحث",
   "search_placeholder": "ابحث عن منتجات...",

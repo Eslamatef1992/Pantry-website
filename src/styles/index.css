@@ -1147,3 +1147,267 @@ button {
     width: 100vw;
   }
 }
+
+/* Product detail page */
+
+.pdp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  color: var(--color-muted);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.pdp-breadcrumb a {
+  color: var(--color-muted);
+}
+
+.pdp-breadcrumb a:hover {
+  color: var(--color-primary-dark);
+}
+
+.pdp-breadcrumb-current {
+  color: var(--color-text);
+}
+
+.pdp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.pdp-gallery-main {
+  position: relative;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdp-gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pdp-discount-pill {
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.pdp-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.pdp-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  padding: 4px;
+  cursor: pointer;
+}
+
+.pdp-thumb.active {
+  border-color: var(--color-primary);
+  border-width: 2px;
+}
+
+.pdp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pdp-info h1 {
+  font-size: 1.7rem;
+  margin: 0 0 10px;
+}
+
+.pdp-brand {
+  color: var(--color-muted);
+  font-weight: 600;
+  margin: 10px 0 4px;
+}
+
+.pdp-sku {
+  color: var(--color-muted);
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.pdp-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.pdp-price {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.pdp-divider {
+  border-top: 1px solid var(--color-border);
+  margin: 20px 0;
+}
+
+.pdp-availability {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.pdp-availability.in-stock {
+  color: var(--color-primary-dark);
+}
+
+.pdp-availability.out-of-stock {
+  color: var(--color-danger);
+}
+
+.pdp-stock-count {
+  color: var(--color-muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.pdp-qty-row {
+  margin-bottom: 20px;
+}
+
+.pdp-qty-row > span {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pdp-qty {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--color-bg-alt);
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.pdp-qty button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-text);
+  line-height: 1;
+}
+
+.pdp-qty button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pdp-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pdp-btn {
+  width: 100%;
+  border-radius: 999px;
+  padding: 15px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pdp-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pdp-btn-outline {
+  background: #fff;
+  color: var(--color-primary-dark);
+  border: 2px solid var(--color-primary);
+}
+
+.pdp-btn-outline:hover:not(:disabled) {
+  background: var(--color-band);
+}
+
+.pdp-btn-solid {
+  background: var(--color-primary);
+  color: #fff;
+  border: 2px solid var(--color-primary);
+}
+
+.pdp-btn-solid:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.pdp-accordion {
+  margin-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+.pdp-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  padding: 18px 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.pdp-accordion-body {
+  padding-bottom: 24px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .pdp-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.footer-powered {
+  text-align: center;
+  padding: 10px 0 18px;
+}
+
+.footer-powered a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.footer-powered a:hover {
+  color: #fff;
+}
