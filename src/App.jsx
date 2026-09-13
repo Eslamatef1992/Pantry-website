@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import SeoInjector from './components/SeoInjector';
 import Footer from './components/Footer';
 import CartDrawer from './components/CartDrawer';
 import PrivateRoute from './components/PrivateRoute';
@@ -24,6 +25,7 @@ import AccountAddresses from './pages/AccountAddresses';
 function App() {
   return (
     <>
+      <SeoInjector />
       <Navbar />
       <CartDrawer />
       <main>
