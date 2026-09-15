@@ -145,7 +145,6 @@ const ProductDetail = () => {
             </svg>
             {inStock ? t('product.available') : t('product.unavailable')}
           </div>
-          {inStock && <div className="pdp-stock-count">{t('product.stock_available', { count: product.stock })}</div>}
 
           <div className="pdp-qty-row">
             <span>{t('product.quantity')}</span>
